@@ -1,6 +1,6 @@
-# GlobalVoice AI
+# Personify Voice AI
 
-*Understand Every Voice. In Every Language.*
+*Every voice. Every language. Crafted for you.* — by Personify Crafters
 
 A Windows desktop application for multilingual speech-to-text,
 translation, AI meeting summaries and text-to-speech — with both fully

@@ -1,14 +1,14 @@
-; Inno Setup script for GlobalVoice AI
+; Inno Setup script for Personify Voice AI (Personify Crafters)
 ; Build the exe first (build_windows.bat), then compile this script
 ; with Inno Setup 6+ (https://jrsoftware.org/isinfo.php)
 
-#define AppName "GlobalVoice AI"
-#define AppVersion "1.0.0"
-#define AppPublisher "Your Company"
-#define AppExe "GlobalVoiceAI.exe"
+#define AppName "Personify Voice AI"
+#define AppVersion "1.1.0"
+#define AppPublisher "Personify Crafters"
+#define AppExe "PersonifyVoiceAI.exe"
 
 [Setup]
-AppId={{8E4C2F7A-1B7D-4A57-9C1E-0AB374C11D29}
+AppId={{3D6B91C4-52E8-4F0A-B7D3-9C2E51AF60B8}
 AppName={#AppName}
 AppVersion={#AppVersion}
 AppPublisher={#AppPublisher}
@@ -16,18 +16,18 @@ DefaultDirName={autopf}\{#AppName}
 DefaultGroupName={#AppName}
 UninstallDisplayIcon={app}\{#AppExe}
 OutputDir=Output
-OutputBaseFilename=GlobalVoiceAI-Setup-{#AppVersion}
+OutputBaseFilename=PersonifyVoiceAI-Setup-{#AppVersion}
 Compression=lzma2
 SolidCompression=yes
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 WizardStyle=modern
 PrivilegesRequired=lowest
-; User data lives in %APPDATA%\GlobalVoiceAI and is NEVER touched by
+; User data lives in %APPDATA%\PersonifyVoiceAI and is NEVER touched by
 ; install/uninstall, so updates preserve sessions and settings.
 
 [Files]
-Source: "..\dist\GlobalVoiceAI\*"; DestDir: "{app}"; \
+Source: "..\dist\PersonifyVoiceAI\*"; DestDir: "{app}"; \
     Flags: recursesubdirs ignoreversion
 
 [Icons]

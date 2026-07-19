@@ -39,11 +39,11 @@ jobs:
       - name: Upload app folder (portable)
         uses: actions/upload-artifact@v4
         with:
-          name: GlobalVoiceAI-portable
-          path: dist/GlobalVoiceAI
+          name: PersonifyVoiceAI-portable
+          path: dist/PersonifyVoiceAI
 
       - name: Upload installer
         uses: actions/upload-artifact@v4
         with:
-          name: GlobalVoiceAI-installer
-          path: build/Output/GlobalVoiceAI-Setup-*.exe
+          name: PersonifyVoiceAI-installer
+          path: build/Output/PersonifyVoiceAI-Setup-*.exe

@@ -15,10 +15,11 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any
 
-APP_NAME = "GlobalVoice AI"
-APP_ID = "GlobalVoiceAI"
-APP_VERSION = "1.0.0"
-TAGLINE = "Understand Every Voice. In Every Language."
+APP_NAME = "Personify Voice AI"
+APP_ID = "PersonifyVoiceAI"
+APP_COMPANY = "Personify Crafters"
+APP_VERSION = "1.1.0"
+TAGLINE = "Every voice. Every language. Crafted for you."
 
 
 def _exe_dir() -> Path:

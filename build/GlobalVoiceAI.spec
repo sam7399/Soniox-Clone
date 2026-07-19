@@ -35,7 +35,7 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name="GlobalVoiceAI",
+    name="PersonifyVoiceAI",
     icon=str(ROOT / "assets" / "app.ico")
         if (ROOT / "assets" / "app.ico").exists() else None,
     console=False,
@@ -44,5 +44,5 @@ exe = EXE(
 
 coll = COLLECT(
     exe, a.binaries, a.zipfiles, a.datas,
-    name="GlobalVoiceAI",
+    name="PersonifyVoiceAI",
 )

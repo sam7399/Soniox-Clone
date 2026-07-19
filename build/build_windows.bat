@@ -1,6 +1,6 @@
 @echo off
 REM ============================================================
-REM  GlobalVoice AI - one-command Windows build
+REM  Personify Voice AI - one-command Windows build
 REM  Requires: Python 3.12+ (64-bit) on PATH, internet connection
 REM  Run from the project root:  build\build_windows.bat
 REM ============================================================
@@ -32,10 +32,10 @@ if errorlevel 1 goto :fail
 
 echo.
 echo ============================================================
-echo  Build complete:  dist\GlobalVoiceAI\GlobalVoiceAI.exe
+echo  Build complete:  dist\PersonifyVoiceAI\PersonifyVoiceAI.exe
 echo  To create the installer, open build\installer.iss with
 echo  Inno Setup 6 and press Compile (or run iscc build\installer.iss)
-echo  Portable version: copy dist\GlobalVoiceAI anywhere and create
+echo  Portable version: copy dist\PersonifyVoiceAI anywhere and create
 echo  an empty file named portable.flag next to the exe.
 echo ============================================================
 exit /b 0

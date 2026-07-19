@@ -54,11 +54,13 @@ class UploadPage(QWidget):
         h2 = QLabel("Processing queue")
         h2.setProperty("h2", True)
         v.addWidget(h2)
-        self.table = QTableWidget(0, 5)
+        self.table = QTableWidget(0, 6)
         self.table.setHorizontalHeaderLabels(
-            ["Job", "Session", "Status", "Progress", "Actions"])
-        self.table.setColumnWidth(1, 380)
-        self.table.setColumnWidth(3, 220)
+            ["Job", "Session", "Status", "Progress", "Stage / Message",
+             "Actions"])
+        self.table.setColumnWidth(1, 300)
+        self.table.setColumnWidth(3, 180)
+        self.table.setColumnWidth(4, 320)
         self.table.horizontalHeader().setStretchLastSection(True)
         self.table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
         v.addWidget(self.table, 1)
@@ -132,7 +134,9 @@ class UploadPage(QWidget):
             bar = QProgressBar()
             bar.setValue(int(progress))
             self.table.setCellWidget(r, 3, bar)
-            self.table.setItem(r, 4, QTableWidgetItem(stage[:80]))
+            stage_item = QTableWidgetItem(stage[:120])
+            stage_item.setToolTip(stage)
+            self.table.setItem(r, 4, stage_item)
             actions = QWidget()
             hl = QHBoxLayout(actions)
             hl.setContentsMargins(2, 0, 2, 0)
@@ -147,8 +151,7 @@ class UploadPage(QWidget):
                                   (get_queue().cancel(x), self.refresh()))
                 hl.addWidget(b)
             hl.addStretch(1)
-            self.table.setCellWidget(r, 4, actions) if status in (
-                "pending", "running", "failed", "cancelled") else None
+            self.table.setCellWidget(r, 5, actions)
 
     def _on_job_event(self, job_id: int, status: str, progress: float,
                       stage: str) -> None:
