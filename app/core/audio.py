@@ -28,9 +28,17 @@ class AudioError(Exception):
 
 def find_ffmpeg(tool: str = "ffmpeg") -> str:
     if getattr(sys, "frozen", False):
-        bundled = Path(sys.executable).parent / "ffmpeg" / f"{tool}.exe"
-        if bundled.exists():
-            return str(bundled)
+        # PyInstaller 6 onedir puts data in _internal (= sys._MEIPASS);
+        # older layouts put it next to the exe. Check both.
+        candidates = [
+            Path(getattr(sys, "_MEIPASS", "")) / "ffmpeg" / f"{tool}.exe",
+            Path(sys.executable).parent / "_internal" / "ffmpeg"
+            / f"{tool}.exe",
+            Path(sys.executable).parent / "ffmpeg" / f"{tool}.exe",
+        ]
+        for bundled in candidates:
+            if bundled.exists():
+                return str(bundled)
     found = shutil.which(tool)
     if found:
         return found
