@@ -1,0 +1,49 @@
+name: Build Windows exe
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: python -m pytest tests -q
+
+      - name: Download FFmpeg
+        shell: pwsh
+        run: ./build/get_ffmpeg.ps1
+
+      - name: Build exe
+        run: pyinstaller build/GlobalVoiceAI.spec --noconfirm
+
+      - name: Build installer (Inno Setup)
+        shell: pwsh
+        run: |
+          choco install innosetup --no-progress -y
+          & "C:\Program Files (x86)\Inno Setup 6\iscc.exe" build\installer.iss
+
+      - name: Upload app folder (portable)
+        uses: actions/upload-artifact@v4
+        with:
+          name: GlobalVoiceAI-portable
+          path: dist/GlobalVoiceAI
+
+      - name: Upload installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: GlobalVoiceAI-installer
+          path: build/Output/GlobalVoiceAI-Setup-*.exe

@@ -1,0 +1,32 @@
+# GlobalVoice AI - Python 3.12+
+# Desktop UI
+PySide6>=6.6
+
+# Database
+SQLAlchemy>=2.0
+
+# Audio
+sounddevice>=0.4.6
+numpy>=1.26
+
+# Offline transcription (optional but recommended)
+faster-whisper>=1.0
+
+# Cloud providers (plain HTTP, no vendor SDKs required)
+requests>=2.31
+
+# Credential storage (Windows Credential Manager via keyring)
+keyring>=24.0
+cryptography>=42.0
+
+# Exports
+python-docx>=1.1
+openpyxl>=3.1
+reportlab>=4.0
+
+# Local TTS fallback
+pyttsx3>=2.90
+
+# Testing / build (dev only)
+pytest>=8.0
+pyinstaller>=6.3
