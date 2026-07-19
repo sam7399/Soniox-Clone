@@ -162,6 +162,14 @@ def test_fallback_chain():
     assert [p.key for p in chain] == ["openai_stt", "whisper_local"]
 
 
+def test_stt_segment_partial_flag():
+    from app.providers.base import STTSegment
+    seg = STTSegment(0, 1, "hello")
+    assert seg.is_final is True
+    partial = STTSegment(0, 1, "hel", is_final=False)
+    assert partial.is_final is False
+
+
 def test_soniox_token_grouping():
     from app.providers.stt.soniox_stt import SonioxSTT
     tokens = [

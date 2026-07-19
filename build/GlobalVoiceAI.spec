@@ -20,6 +20,7 @@ a = Analysis(
         "pyttsx3.drivers", "pyttsx3.drivers.sapi5",
         "keyring.backends.Windows",
         "docx", "openpyxl", "reportlab",
+        "websocket", "keyboard",
     ],
     excludes=["tkinter", "matplotlib", "IPython", "jupyter"],
     hookspath=[],

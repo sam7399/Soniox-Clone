@@ -16,10 +16,12 @@ from app.ui.pages.settings import SettingsPage
 from app.ui.pages.tts import TTSPage
 from app.ui.pages.upload import UploadPage
 from app.ui.pages.vocabulary import VocabularyPage
+from app.ui.pages.voicetyping import VoiceTypingPage
 
 NAV = [
     ("dashboard", "  Dashboard"),
     ("live", "  Live Transcription"),
+    ("voicetyping", "  Voice Typing"),
     ("upload", "  Upload & Queue"),
     ("sessions", "  Sessions"),
     ("tts", "  Text-to-Speech"),
@@ -70,6 +72,7 @@ class MainWindow(QMainWindow):
         self.pages: dict[str, QWidget] = {
             "dashboard": DashboardPage(self),
             "live": LivePage(self),
+            "voicetyping": VoiceTypingPage(self),
             "upload": UploadPage(self),
             "sessions": SessionsPage(self),
             "editor": EditorPage(self),

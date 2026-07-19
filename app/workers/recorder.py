@@ -47,9 +47,11 @@ class Recorder:
     def __init__(self,
                  on_level: Callable[[float], None] | None = None,
                  on_window: Callable[[Path], None] | None = None,
+                 on_chunk: Callable[[bytes], None] | None = None,
                  window_s: float = 6.0) -> None:
         self.on_level = on_level
         self.on_window = on_window
+        self.on_chunk = on_chunk    # raw 16-bit PCM, for streaming STT
         self.window_s = window_s
         self.sample_rate = 16000
         self._frames: list[np.ndarray] = []
@@ -99,6 +101,9 @@ class Recorder:
                 self._window_frames.append(mono)
             if self.on_level is not None:
                 self.on_level(float(np.abs(mono).mean()) * 3.0)
+            if self.on_chunk is not None:
+                pcm16 = (np.clip(mono, -1, 1) * 32767).astype(np.int16)
+                self.on_chunk(pcm16.tobytes())
             if self.on_window is not None:
                 win_len = sum(len(f) for f in self._window_frames)
                 if win_len >= self.window_s * self.sample_rate:

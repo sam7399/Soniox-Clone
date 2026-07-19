@@ -71,6 +71,7 @@ class STTSegment:
     speaker: str = ""          # "Speaker 1" etc. when diarization available
     confidence: float = 1.0
     words: list[Word] = field(default_factory=list)
+    is_final: bool = True      # False = streaming partial, will be revised
 
 
 @dataclass

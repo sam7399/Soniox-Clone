@@ -27,6 +27,10 @@ reportlab>=4.0
 # Local TTS fallback
 pyttsx3>=2.90
 
+# Real-time streaming (Soniox realtime WS) + voice typing
+websocket-client>=1.7
+keyboard>=0.13
+
 # Testing / build (dev only)
 pytest>=8.0
 pyinstaller>=6.3
